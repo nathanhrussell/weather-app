@@ -26,3 +26,6 @@ coverage/
 
 # Git Hooks (optional)
 .husky/
+
+# Todo List
+todo.md
