@@ -16,8 +16,8 @@ async function getWeather() {
 
     const location = capitaliseFirstLetter(data.address)
     const today = data.days[0]
-    const temperature = ((today.temp - 32) * 5) / 9
-    const feelsLike = ((today.feelslike - 32) * 5) / 9
+    const temperature = Math.round(((today.temp - 32) * 5) / 9)
+    const feelsLike = Math.round(((today.feelslike - 32) * 5) / 9)
 
     console.log(`📍 Location: ${location}`)
     console.log(`🌡️ Temperature: ${temperature}°C`)
