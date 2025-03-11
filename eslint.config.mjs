@@ -28,5 +28,9 @@ export default [
       quotes: ["error", "double"],
       semi: ["error", "always"],
     },
+    env: {
+      "browser": true,
+      "node": true,
+    }
   },
 ];
