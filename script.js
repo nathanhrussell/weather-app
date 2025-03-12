@@ -1,3 +1,5 @@
+const apiKey = "DRYKFVEYKQSZTNND2L3L2TKAF";
+
 function capitaliseFirstLetter(val) {
   return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
@@ -30,9 +32,9 @@ const descriptionMap = {
   "fog": "It's foggy right now"
 };
 
-async function getWeather() {
+async function getWeather(location) {
   const url =
-    "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/paris?key=DRYKFVEYKQSZTNND2L3L2TKAF";
+    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${apiKey}`;
 
   try {
     const response = await fetch(url);
@@ -67,5 +69,17 @@ async function getWeather() {
   }
 }
 
+function handleSearch(event) {
+  if (event.key === "Enter") {
+    const location = event.target.value.trim();
+    if (location) {
+      getWeather(location);
+      event.target.value = "";
+    }
+  }
+}
+
+document.querySelector(".search-container input").addEventListener("keypress", handleSearch);
+
 // Call the function
-getWeather();
+getWeather("London");
